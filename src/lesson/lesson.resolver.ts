@@ -8,13 +8,10 @@ export class LessonResolver {
         private lessonService: LessonService
     ) {}
     @Query(_returns => LessonType)
-    lesson() {
-        return {
-            id: "4542343",
-            name: "Django",
-            startDate: "1996-09-01",
-            endDate: "2021-09-01"
-        }
+    lesson(
+        @Args("id") id: string
+    ) {
+        return this.lessonService.getLesson(id);
     }
 
     @Mutation(_returns => LessonType)
